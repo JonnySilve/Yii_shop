@@ -25,7 +25,7 @@ apt-get update
 apt-get upgrade -y
 
 info "Install additional software"
-apt-get install -y php7.4-curl php7.4-cli php7.4-intl php7.4-mysqlnd php7.4-gd php7.4-fpm php7.4-mbstring php7.4-xml unzip nginx mysql-server-8 php.xdebug
+apt-get install -y php7.4-curl php7.4-cli php7.4-intl php7.4-mysqlnd php7.4-gd php7.4-fpm php7.4-mbstring php7.4-xml unzip nginx mysql-server php.xdebug
 
 info "Configure MySQL"
 sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mysql.conf.d/mysqld.cnf
@@ -39,7 +39,7 @@ info "Configure PHP-FPM"
 sed -i 's/user = www-data/user = vagrant/g' /etc/php/7.4/fpm/pool.d/www.conf
 sed -i 's/group = www-data/group = vagrant/g' /etc/php/7.4/fpm/pool.d/www.conf
 sed -i 's/owner = www-data/owner = vagrant/g' /etc/php/7.4/fpm/pool.d/www.conf
-cat << EOF > /etc/php/7.0/mods-available/xdebug.ini
+cat << EOF > /etc/php/7.4/mods-available/xdebug.ini
 zend_extension=xdebug.so
 xdebug.remote_enable=1
 xdebug.remote_connect_back=1
